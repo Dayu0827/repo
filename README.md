@@ -1,2 +1,3 @@
-# dayu0827.github.io
-Dayu0827's Cydia repo
+# Dayu's Cydia repo
+
+https://dayu0827.github.io/repo/
