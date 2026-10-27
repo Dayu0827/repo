@@ -2,7 +2,7 @@ Package: org.dayuzou.airtuneshall-disable
 Version: 1.0.2
 Architecture: iphoneos-arm
 Maintainer: Dayu Zou
-Depends: firmware (>= 6.0), firmware (<< 7.0)
+Depends: firmware (>= 6.0), firmware (<< 8.0)
 Filename: debs/org.dayuzou.airtuneshall-disable_1.0.2_iphoneos-arm.deb
 Size: 1602
 MD5sum: abb0990a8e648ba34732ef952c57ade6
