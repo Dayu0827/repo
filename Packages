@@ -2,7 +2,7 @@ Package: org.dayuzou.airtuneshall-disable
 Version: 1.0.2
 Architecture: iphoneos-arm
 Maintainer: Dayu Zou
-Depends: firmware (>= 6.0), firmware (<< 8.0)
+Depends: firmware (>= 6.0), firmware (<< 7.0)
 Filename: debs/org.dayuzou.airtuneshall-disable_1.0.2_iphoneos-arm.deb
 Size: 1602
 MD5sum: abb0990a8e648ba34732ef952c57ade6
@@ -14,3 +14,18 @@ Description: Fixes music stuttering and lag on CoolBooter iOS 6 setups by disabl
 Author: Dayu Zou
 Name: CoolBooterAudioFix
 
+Package: org.dayuzou.airtuneshall-disable-ios7-beta
+Version: 1.0.3~beta1
+Architecture: iphoneos-arm
+Maintainer: Dayu Zou
+Depends: firmware (>= 7.0), firmware (<< 8.0)
+Filename: debs/org.dayuzou.airtuneshall-disable-ios7-beta_1.0.3~beta1_iphoneos-arm.deb
+Size: 1340
+MD5sum: 0bcc90d9d5b0de56e28685eb1d5ba546
+SHA1: 4be3256c4c635d6dc02a9049d9e0d6bd88565e64
+SHA256: 7c62c6ade16e3ebbf87686647e98aba1ceec0e3141ed627b54d6926a65a76220
+Section: System
+Priority: optional
+Description: Experimental iOS 7 test build of CoolBooterAudioFix; not yet validated on physical iOS 7 hardware.
+Author: Dayu Zou
+Name: CoolBooterAudioFix (iOS 7 Beta)
