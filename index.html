@@ -3,23 +3,78 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Dayu's personal Cydia repository for legacy iOS devices.">
   <title>Dayu's Cydia Repository</title>
   <style>
-    body { max-width: 760px; margin: 3rem auto; padding: 0 1rem; font: 16px/1.6 system-ui, sans-serif; }
+    :root { color-scheme: light dark; }
+    * { box-sizing: border-box; }
+    body {
+      max-width: 820px; margin: 0 auto; padding: 2.5rem 1.1rem 3rem;
+      font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    h1 { line-height: 1.2; margin-bottom: .5rem; }
+    h2 { margin-top: 2rem; }
+    .muted { opacity: .78; }
+    .card {
+      border: 1px solid color-mix(in srgb, currentColor 22%, transparent);
+      border-radius: 14px; padding: 1.1rem 1.2rem; margin: 1rem 0;
+    }
+    .card h3 { margin: 0 0 .25rem; }
+    .tag {
+      display: inline-block; border: 1px solid currentColor; border-radius: 999px;
+      padding: .08rem .55rem; font-size: .78rem; margin: .3rem 0 .6rem;
+    }
+    .warning {
+      border-left: 4px solid #d97706; padding: .65rem .9rem; margin: .9rem 0;
+      background: color-mix(in srgb, #d97706 9%, transparent);
+    }
     code { overflow-wrap: anywhere; }
+    a { text-underline-offset: .18em; }
+    .download { display: inline-block; margin-top: .25rem; font-weight: 650; }
+    footer { margin-top: 2rem; font-size: .9rem; }
   </style>
 </head>
 <body>
-  <h1>Dayu's Cydia Repository</h1>
-  <p>Personal package repository for legacy iOS devices.</p>
-  <h2>Available package</h2>
-  <h3>CoolBooterAudioFix · 1.0.2</h3>
-  <p>Fixes music stuttering and lag on CoolBooter iOS 6 setups by disabling the broken AirPlay HAL plugin to bypass sandbox write locks.</p>
-  <p>Package ID: <code>org.dayuzou.airtuneshall-disable</code></p>
-  <h2>Source URL</h2>
+  <header>
+    <h1>Dayu's Cydia Repository</h1>
+    <p class="muted">Personal package repository for legacy iOS devices.</p>
+  </header>
+
+  <h2>Available packages</h2>
+
+  <section class="card" aria-labelledby="stable-title">
+    <span class="tag">iOS 6 · Stable release</span>
+    <h3 id="stable-title">CoolBooterAudioFix 1.0.2</h3>
+    <p>Designed to address reported music stuttering on CoolBooter iOS 6 setups by disabling the AirTunes HAL plugin.</p>
+    <p><strong>Compatibility:</strong> iOS 6.x (package dependency: iOS 6 only).</p>
+    <p><strong>Package ID:</strong> <code>org.dayuzou.airtuneshall-disable</code></p>
+    <p class="muted">Reported test: iPod touch 5 running iOS 6.1.3. Other devices and versions have not been verified.</p>
+    <a class="download" href="debs/org.dayuzou.airtuneshall-disable_1.0.2_iphoneos-arm.deb">Download stable DEB (1.0.2)</a>
+  </section>
+
+  <section class="card" aria-labelledby="beta-title">
+    <span class="tag">iOS 7 · Experimental beta</span>
+    <h3 id="beta-title">CoolBooterAudioFix 1.0.3~beta1</h3>
+    <p>Experimental iOS 7 package for community testing. It uses a separate package ID and is not an upgrade of the iOS 6 release.</p>
+    <p><strong>Target compatibility:</strong> iOS 7.x (package dependency: iOS 7 only).</p>
+    <p><strong>Package ID:</strong> <code>org.dayuzou.airtuneshall-disable-ios7-beta</code></p>
+    <div class="warning">
+      <strong>Not yet verified on physical iOS 7 hardware.</strong>
+      Please test only if you have a reliable recovery method and have backed up the original plugin. Disabling this plugin may remove AirPlay output support. The package's installation, audio behavior, and rollback still need real-device testing.
+    </div>
+    <a class="download" href="debs/org.dayuzou.airtuneshall-disable-ios7-beta_1.0.3~beta1_iphoneos-arm.deb">Download iOS 7 beta DEB (1.0.3~beta1)</a>
+  </section>
+
+  <h2>Add this repository in Cydia</h2>
+  <p>Repository URL:</p>
   <p><code>https://dayu0827.github.io/repo/</code></p>
+  <p>Add the URL in Cydia's Sources section to browse packages and receive repository metadata.</p>
+
   <h2>Repository metadata</h2>
-  <p><a href="Packages.gz">Packages.gz</a> · <a href="Release">Release metadata</a></p>
-  <p>Packages are supplied as-is. Check compatibility and keep a recovery path before installation.</p>
+  <p><a href="Packages">Packages</a> · <a href="Packages.gz">Packages.gz</a> · <a href="Release">Release metadata</a></p>
+
+  <footer class="muted">
+    <p>Packages are provided as-is. Check the target iOS version before installation, keep an external backup, and maintain a working recovery path. Beta compatibility is not guaranteed.</p>
+  </footer>
 </body>
 </html>
