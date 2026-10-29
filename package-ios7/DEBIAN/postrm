@@ -1,0 +1,32 @@
+#!/bin/sh
+HAL_DIR="/Library/Audio/Plug-Ins/HAL"
+ORIGINAL="$HAL_DIR/AirTunesHAL.pdev"
+BACKUP="$HAL_DIR/AirTunesHAL.pdev.bak"
+path_exists() { [ -e "$1" ] || [ -L "$1" ]; }
+case "${1:-}" in
+  remove|purge) ;;
+  *) exit 0 ;;
+esac
+if path_exists "$BACKUP"; then
+  if path_exists "$ORIGINAL"; then
+    echo "WARNING: original path already exists; backup left untouched." >&2
+    exit 0
+  fi
+  if [ ! -d "$BACKUP" ] || [ -L "$BACKUP" ]; then
+    echo "WARNING: backup is not a normal directory; left untouched: $BACKUP" >&2
+    exit 0
+  fi
+  if mv "$BACKUP" "$ORIGINAL"; then
+    echo "Original plugin restored to $ORIGINAL."
+    echo "A full reboot is required to reload the plugin."
+  else
+    echo "WARNING: restore failed; backup remains at $BACKUP." >&2
+  fi
+  exit 0
+fi
+if path_exists "$ORIGINAL"; then
+  echo "Original plugin is present; nothing to restore."
+else
+  echo "WARNING: neither original nor backup path exists; inspect manually." >&2
+fi
+exit 0

@@ -1,0 +1,10 @@
+Package: org.dayuzou.airtuneshall-disable-ios7-beta
+Name: CoolBooterAudioFix (iOS 7 Beta)
+Version: 1.0.3~beta1
+Architecture: iphoneos-arm
+Description: Experimental iOS 7 test build of CoolBooterAudioFix; not yet validated on physical iOS 7 hardware.
+Maintainer: Dayu Zou
+Author: Dayu Zou
+Section: System
+Priority: optional
+Depends: firmware (>= 7.0), firmware (<< 8.0)

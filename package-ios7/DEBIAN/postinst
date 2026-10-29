@@ -1,0 +1,36 @@
+#!/bin/sh
+set -eu
+HAL_DIR="/Library/Audio/Plug-Ins/HAL"
+ORIGINAL="$HAL_DIR/AirTunesHAL.pdev"
+BACKUP="$HAL_DIR/AirTunesHAL.pdev.bak"
+path_exists() { [ -e "$1" ] || [ -L "$1" ]; }
+case "${1:-configure}" in
+  configure) ;;
+  abort-remove|abort-deconfigure) exit 0 ;;
+  *) exit 0 ;;
+esac
+if path_exists "$BACKUP"; then
+  if path_exists "$ORIGINAL"; then
+    echo "CoolBooterAudioFix iOS 7 beta: both original and backup exist; refusing to overwrite either." >&2
+    exit 1
+  fi
+  if [ ! -d "$BACKUP" ] || [ -L "$BACKUP" ]; then
+    echo "CoolBooterAudioFix iOS 7 beta: backup is not a normal directory: $BACKUP" >&2
+    exit 1
+  fi
+  echo "Plugin already appears disabled; backup preserved at $BACKUP."
+  exit 0
+fi
+if [ ! -d "$HAL_DIR" ] || [ -L "$HAL_DIR" ]; then
+  echo "ERROR: HAL directory missing or not a normal directory: $HAL_DIR" >&2
+  echo "No files were changed." >&2
+  exit 1
+fi
+if [ ! -d "$ORIGINAL" ] || [ -L "$ORIGINAL" ]; then
+  echo "ERROR: plugin missing or not a normal directory: $ORIGINAL" >&2
+  echo "No files were changed; confirm the actual iOS 7 path." >&2
+  exit 1
+fi
+mv "$ORIGINAL" "$BACKUP"
+echo "Plugin disabled; backup preserved at $BACKUP."
+echo "A full reboot is required. No automatic reboot was attempted."
